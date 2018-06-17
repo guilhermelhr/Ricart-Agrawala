@@ -4,22 +4,22 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 
 public class Network {
-    private ArrayList<Replica> peers = new ArrayList<>();
+    private ArrayList<Process> peers = new ArrayList<>();
     private ArrayList<LinkedList<Message>> messageQueues = new ArrayList<>();
 
     /**
      * Adds a peer to the network
-     * @param replica
+     * @param process
      */
-    public void addPeer(Replica replica){
-        replica.network = this;
-        replica.clock = new Clock(peers.size(), 0);
+    public void addPeer(Process process){
+        process.network = this;
+        process.clock = new Clock(peers.size(), 0);
         messageQueues.add(new LinkedList<>());
-        peers.add(replica);
+        peers.add(process);
     }
 
     /**
-     * Sends a message to specified replica
+     * Sends a message to specified process
      * @param message
      * @param pid destination identifier
      */
@@ -31,7 +31,7 @@ public class Network {
     }
 
     /**
-     * Gets message for a replica
+     * Gets message for a process
      * @param pid replica's pid
      * @return oldest message if there is one, null otherwise
      */
