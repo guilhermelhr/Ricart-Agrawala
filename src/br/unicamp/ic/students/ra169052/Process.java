@@ -90,7 +90,7 @@ public class Process {
                     //has replied with ALLOW
                     if (allowCount == network.getPeerCount()) {
                         accessRequested = false;
-                        //use critial region
+                        //use critical region
                         doProcess();
                         //handle previously deferred messages
                         sendDeferredMessages();
